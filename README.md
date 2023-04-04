@@ -15,7 +15,7 @@ RabbitMQ from our perspective https://dic.pixiv.net/a/%E3%83%AD%E3%83%93%E3%83%B
 ## Getting started
 
 ```
-cd el7 # or cd el9
+cd el7 # or cd el8
 vagrant up --no-parallel
 ```
 

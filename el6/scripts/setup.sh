@@ -2,16 +2,19 @@
 
 set -eux
 
+echo 'nameserver 192.168.121.1' > /etc/resolv.conf
+
 # RabbitMQ Erlang Version Requirements https://www.rabbitmq.com/which-erlang.html
 
 # https://github.com/rabbitmq/erlang-rpm
-# 23.3.4.11: Last release of EL7 Erlang RPM
-ERLANG_VERSION="23.3.4.11"
-ERLANG_RPM="erlang-$ERLANG_VERSION-1.el7.x86_64.rpm"
+# 23.1.4: Last release of EL6 Erlang RPM
+ERLANG_VERSION="23.1.4"
+ERLANG_RPM="erlang-$ERLANG_VERSION-1.el6.x86_64.rpm"
+
 # https://github.com/rabbitmq/rabbitmq-server
-# 3.9.16: Last release of EL7 RabbitMQ RPM
-RABBITMQ_VERSION="3.9.16"
-RABBITMQ_RPM="rabbitmq-server-$RABBITMQ_VERSION-1.el7.noarch.rpm"
+# 3.8.9: Last release of EL6 RabbitMQ RPM
+RABBITMQ_VERSION="3.8.9"
+RABBITMQ_RPM="rabbitmq-server-$RABBITMQ_VERSION-1.el6.noarch.rpm"
 
 CACHE_DIR="/vagrant/cache"
 
@@ -37,7 +40,8 @@ yum install -y /vagrant/cache/$RABBITMQ_RPM
 chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie
 chmod 600 /var/lib/rabbitmq/.erlang.cookie
 
-systemctl start rabbitmq-server
+service iptables stop
+service rabbitmq-server start
 
 sleep 10
 

@@ -2,10 +2,14 @@
 
 set -eux
 
+# RabbitMQ Erlang Version Requirements https://www.rabbitmq.com/which-erlang.html
+
 # https://github.com/rabbitmq/erlang-rpm
+# 25.3: Latest release as of 23/04/07
 ERLANG_VERSION="25.3"
 ERLANG_RPM="erlang-$ERLANG_VERSION-1.el8.x86_64.rpm"
 # https://github.com/rabbitmq/rabbitmq-server
+# 3.11.13: Latest release as of 23/04/07
 RABBITMQ_VERSION="3.11.13"
 RABBITMQ_RPM="rabbitmq-server-$RABBITMQ_VERSION-1.el8.noarch.rpm"
 
@@ -23,6 +27,7 @@ if [ ! -e $CACHE_DIR/$RABBITMQ_RPM ]; then
     popd
 fi
 
+dnf makecache
 dnf install -y /vagrant/cache/$ERLANG_RPM
 dnf install -y /vagrant/cache/$RABBITMQ_RPM
 

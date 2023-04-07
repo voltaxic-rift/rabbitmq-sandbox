@@ -2,8 +2,6 @@
 
 set -eux
 
-echo 'nameserver 192.168.121.1' > /etc/resolv.conf
-
 # RabbitMQ Erlang Version Requirements https://www.rabbitmq.com/which-erlang.html
 
 # https://github.com/rabbitmq/erlang-rpm

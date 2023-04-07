@@ -4,10 +4,13 @@ RabbitMQ from our perspective https://dic.pixiv.net/a/%E3%83%AD%E3%83%93%E3%83%B
 
 ## Requirements
 
-- libvirt environment
+- libvirt environment (optional)
+    - You can also use VirtualBox by setting environment variable.
+    - `export VAGRANT_DEFAULT_PROVIDER=virtualbox`
+    - However, **libvirt is used as the default provider**.
 - Vagrant
 - Vagrant plugins
-    - vagrant-libvirt
+    - vagrant-libvirt (optional)
     - vagrant-sshfs
 - Lots of compute resources
     - CPU, RAM
